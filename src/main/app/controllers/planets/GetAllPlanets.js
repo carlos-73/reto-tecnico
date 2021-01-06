@@ -7,9 +7,10 @@ const STATUS_ERROR = "ERROR";
 
 module.exports.getAllPlanets = async event => {
   const service = new planetService();
+  const source = event && event.queryStringParameters ? event.queryStringParameters.source : '';
   var response = {};
   try {
-    const result = await service.getAllPlanets();
+    const result = await service.getAllPlanets(source);
     response = new myGenericResponse(STATUS_OK, 200, "Listado de planetas", result.length, result);
   } catch (e) {
     var err = e.error ? e.error : (e.message ? e.message : e);

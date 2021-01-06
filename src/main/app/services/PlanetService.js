@@ -1,12 +1,16 @@
 'use strict';
 const planetDao = require('../repositories/PlanetDao');
+const swapiService = require('./SwapiService');
 const uuid = require('uuid');
-const axios = require('axios');
 
 class PlanetDao {
     constructor() { }
-    async getAllPlanets() {
+    async getAllPlanets(source = '') {
         try {
+            if (source.toLowerCase() === 'external') {
+                const swapi = new swapiService();
+                return await swapi.getStarWarsPlanets();
+            }
             const dao = new planetDao();
             return await dao.getAllPlanets();
         } catch (error) {
