@@ -1,0 +1,33 @@
+{
+  "name": "reto-tecnico",
+  "version": "1.0.0",
+  "description": "_Reto técnico utlizando Serverless y NodeJs_",
+  "scripts": {
+    "start": "sls offline start",
+    "test": "jest ./src/test/app/services/Test.spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlos-73/reto-tecnico.git"
+  },
+  "keywords": [],
+  "author": "Carlos Alberto Sullon Chavez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/carlos-73/reto-tecnico/issues"
+  },
+  "homepage": "https://github.com/carlos-73/reto-tecnico#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "dotenv": "^8.2.0",
+    "dynamoose": "^2.5.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3",
+    "serverless-add-api-key": "^4.2.0",
+    "serverless-dotenv-plugin": "^3.1.0",
+    "serverless-offline": "^6.8.0",
+    "serverless-prune-plugin": "^1.4.3"
+  }
+}
