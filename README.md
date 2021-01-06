@@ -13,6 +13,11 @@ _Estas instrucciones te permitirán obtener una copia del proyecto en funcionami
 _Para ejecutarse, este proyecto necesita:_
 ```
 - NodeJs v12+
+- Serverless
+    - Framework Core: 2.17.0
+    - Plugin: 4.4.1
+    - SDK: 2.3.2
+    - Components: 3.4.3
 ```
 
 ### Instalación 🔧
@@ -36,9 +41,9 @@ _Ejecutar comando para iniciar el proyecto_
 ```
 npm run start
 ```
-_Copiar el api key offline que se muestra en el log de arranque y enviarlo por header en cada peticion_
+_Copiar el api key que se muestra en el log de arranque y enviarlo por header en cada peticion_
 ```
-X-Api-Key -> {{API-KEY-OFFLINE}}
+X-Api-Key -> {{API-KEY}}
 ```
 
 ## Ejecutando las pruebas ⚙️
@@ -54,4 +59,3 @@ _Ejecutar comando para realizar el despliegue_
 ```
 npm run deploy
 ```
-_Nota: -v muestra los detalles del despliegue_
