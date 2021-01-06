@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "_Reto técnico utlizando Serverless y NodeJs_",
   "scripts": {
-    "start": "sls offline start",
-    "test": "jest ./src/test/app/services/Test.spec.js"
+    "start": "AWS_PROFILE=devProfile sls offline start",
+    "test": "jest ./src/test/app/services/PlanetService.spec.js",
+    "deploy": "AWS_PROFILE=devProfile sls deploy -v"
   },
   "repository": {
     "type": "git",

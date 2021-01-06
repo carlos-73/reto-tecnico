@@ -36,6 +36,10 @@ _Ejecutar comando para iniciar el proyecto_
 ```
 npm run start
 ```
+_Copiar el api key offline que se muestra en el log de arranque y enviarlo por header en cada peticion_
+```
+X-Api-Key -> {{API-KEY-OFFLINE}}
+```
 
 ## Ejecutando las pruebas ⚙️
 
@@ -48,6 +52,6 @@ npm run test
 
 _Ejecutar comando para realizar el despliegue_
 ```
-sls deploy -v
+npm run deploy
 ```
 _Nota: -v muestra los detalles del despliegue_
