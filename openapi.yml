@@ -1,0 +1,245 @@
+openapi: 3.0.0
+components:
+  schemas:
+    Planet:
+      title: Esquema de planeta
+      properties:
+        id:
+          type: string
+        nombre:
+          type: string
+        periodo_rotacion:
+          type: string
+        periodo_orbital:
+          type: string
+        diametro:
+          type: string
+        clima:
+          type: string
+        gravedad:
+          type: string
+        terreno:
+          type: string
+        superficie_agua:
+          type: string
+        poblacion:
+          type: string
+        residentes:
+          type: object
+        peliculas:
+          type: object
+        creado:
+          type: string
+        editado:
+          type: string
+        url:
+          type: string
+    PlanetCreated:
+      title: Esquema de respuesta al crear un planeta
+      properties:
+        status:
+          type: string
+        code:
+          type: number
+        message:
+          type: string
+        number_records:
+          type: number
+        object:
+          description: Esquema de planeta
+          properties:
+            id:
+              type: string
+            nombre:
+              type: string
+            periodo_rotacion:
+              type: string
+            periodo_orbital:
+              type: string
+            diametro:
+              type: string
+            clima:
+              type: string
+            gravedad:
+              type: string
+            terreno:
+              type: string
+            superficie_agua:
+              type: string
+            poblacion:
+              type: string
+            residentes:
+              type: object
+            peliculas:
+              type: object
+            creado:
+              type: string
+            editado:
+              type: string
+            url:
+              type: string
+    Planets:
+      title: Esquema de respuesta al obtener todos los planetas
+      properties:
+        status:
+          type: string
+        code:
+          type: number
+        message:
+          type: string
+        number_records:
+          type: number
+        object:
+          description: Esquema de planeta
+          properties:
+            id:
+              type: string
+            nombre:
+              type: string
+            periodo_rotacion:
+              type: string
+            periodo_orbital:
+              type: string
+            diametro:
+              type: string
+            clima:
+              type: string
+            gravedad:
+              type: string
+            terreno:
+              type: string
+            superficie_agua:
+              type: string
+            poblacion:
+              type: string
+            residentes:
+              type: object
+            peliculas:
+              type: object
+            creado:
+              type: string
+            editado:
+              type: string
+            url:
+              type: string
+    PlanetFound:
+      title: Esquema de respuesta al obtener un planeta
+      properties:
+        status:
+          type: string
+        code:
+          type: number
+        message:
+          type: string
+        number_records:
+          type: number
+        object:
+          description: Esquema de planeta
+          properties:
+            id:
+              type: string
+            nombre:
+              type: string
+            periodo_rotacion:
+              type: string
+            periodo_orbital:
+              type: string
+            diametro:
+              type: string
+            clima:
+              type: string
+            gravedad:
+              type: string
+            terreno:
+              type: string
+            superficie_agua:
+              type: string
+            poblacion:
+              type: string
+            residentes:
+              type: object
+            peliculas:
+              type: object
+            creado:
+              type: string
+            editado:
+              type: string
+            url:
+              type: string
+    ErrorReponse:
+      properties:
+        status:
+          type: string
+        number_records:
+          type: number
+        message:
+          type: string
+        data:
+          type: object
+  securitySchemes: {}
+info:
+  title: Documentacion del API
+  description: Documentacion utilizando Open API
+  version: '1'
+paths:
+  //planets:
+    get:
+      operationId: getAllPlanets
+      summary: Obtener planetas
+      description: Funcion utilizada para obtener todos los planetas
+      responses:
+        '200':
+          description: Status 200 Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Planets'
+        '500':
+          description: Status 500 Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorReponse'
+    post:
+      operationId: createPlanet
+      summary: Crear planeta
+      description: Funcion utilizada para la creacion de un planeta
+      responses:
+        '201':
+          description: Status 201 Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlanetCreated'
+        '400':
+          description: Status 400 Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorReponse'
+        '500':
+          description: Status 500 Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorReponse'
+  '//planets/{nombre}':
+    get:
+      operationId: getPlanetByName
+      summary: Obtener planeta
+      description: >-
+        Funcion utilizada para obtener un planeta utilizando su nombre como
+        filtro
+      responses:
+        '200':
+          description: Status 200 Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlanetFound'
+        '500':
+          description: Status 500 Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorReponse'

@@ -5,7 +5,8 @@
   "scripts": {
     "start": "AWS_PROFILE=devProfile sls offline start",
     "test": "jest ./src/test/app/services/PlanetService.spec.js",
-    "deploy": "AWS_PROFILE=devProfile sls deploy -v"
+    "deploy": "AWS_PROFILE=devProfile sls deploy -v",
+    "documentation": "serverless openapi generate"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,7 @@
     "serverless-add-api-key": "^4.2.0",
     "serverless-dotenv-plugin": "^3.1.0",
     "serverless-offline": "^6.8.0",
+    "serverless-openapi-documentation": "^0.4.0",
     "serverless-prune-plugin": "^1.4.3"
   }
 }

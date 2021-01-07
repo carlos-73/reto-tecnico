@@ -7,6 +7,7 @@ plugins:
   - serverless-dotenv-plugin
   - serverless-prune-plugin
   - serverless-add-api-key
+  - serverless-openapi-documentation
 
 custom:
   serverless-offline:
@@ -39,6 +40,41 @@ custom:
         throttle:
           rateLimit: 10000
           burstLimit: 5000
+  documentation:
+    version: '1'
+    title: Documentacion del API
+    description: Documentacion utilizando Open API
+    models:
+      - name: Planet
+        description: Planeta de Star Wars
+        contentType: "application/json"
+        schema: ${file(src/main/app/models/Planet.json)}
+      - name: PlanetCreated
+        description: Modelo de respuesta al crear Planeta
+        contentType: "application/json"
+        schema: ${file(src/main/app/models/PlanetCreated.json)}
+      - name: Planets
+        description: Modelo de respuesta al obtener todos los planetas
+        contentType: "application/json"
+        schema: ${file(src/main/app/models/Planets.json)}
+      - name: PlanetFound
+        description: Modelo de respuesta al encontrar un planeta
+        contentType: "application/json"
+        schema: ${file(src/main/app/models/PlanetFound.json)}
+      - name: ErrorReponse
+        description: Modelo de la respuesta de error
+        contentType: "application/json"
+        schema:
+          $schema: "http://json-schema.org/draft-04/schema#"
+          properties:
+            status:
+              type: string
+            number_records:
+              type: number
+            message:
+              type: string
+            data:
+              type: object
 
 provider:
   name: aws
@@ -80,6 +116,23 @@ functions:
             headers: ${self:custom.allowed-headers}
           integration: ${self:custom.settings.FNC_HTTP_INTEGRATION}
           private: true
+          documentation:
+            summary: Obtener planetas
+            description: Funcion utilizada para obtener todos los planetas
+            queryParams:
+            - name: "source"
+              description: "Parametro utilizado para indicar si se quiere obtener los planetas de la base de datos o de un api externa. Puede tomar el valor 'external'."
+              schema:
+                type: "string"
+                enum:
+                    - "external"
+            methodResponses:
+              - statusCode: '200'
+                responseModels:
+                  "application/json": Planets
+              - statusCode: '500'
+                responseModels:
+                  "application/json": ErrorReponse
   createPlanet:
     handler: src/main/app//controllers/planets/CreatePlanet.createPlanet
     events:
@@ -91,6 +144,23 @@ functions:
             headers: ${self:custom.allowed-headers}
           integration: ${self:custom.settings.FNC_HTTP_INTEGRATION}
           private: true
+          documentation:
+            summary: Crear planeta
+            description: Funcion utilizada para la creacion de un planeta
+            requestBody:
+              description: Datos del planeta
+            requestModels:
+              application/json: Planet
+            methodResponses:
+              - statusCode: '201'
+                responseModels:
+                  "application/json": PlanetCreated
+              - statusCode: '400'
+                responseModels:
+                  "application/json": ErrorReponse
+              - statusCode: '500'
+                responseModels:
+                  "application/json": ErrorReponse
   getPlanetByName:
     handler: src/main/app//controllers/planets/GetPlanetByName.getPlanetByName
     events:
@@ -102,3 +172,18 @@ functions:
             headers: ${self:custom.allowed-headers}
           integration: ${self:custom.settings.FNC_HTTP_INTEGRATION}
           private: true
+          documentation:
+            summary: Obtener planeta
+            description: Funcion utilizada para obtener un planeta utilizando su nombre como filtro
+            pathParams:
+            - name: "nombre"
+              description: "Nombre del planeta"
+              schema:
+                type: "string"
+            methodResponses:
+              - statusCode: '200'
+                responseModels:
+                  "application/json": PlanetFound
+              - statusCode: '500'
+                responseModels:
+                  "application/json": ErrorReponse

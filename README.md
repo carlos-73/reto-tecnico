@@ -53,6 +53,13 @@ _Ejecutar comando para realizar pruebas_
 npm run test
 ```
 
+## Ejecutando la documentacion 📋
+
+_Ejecutar comando para realizar la documentacion_
+```
+npm run documentation
+```
+
 ## Despliegue 📦
 
 _Ejecutar comando para realizar el despliegue_

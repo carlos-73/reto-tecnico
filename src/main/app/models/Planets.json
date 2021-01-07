@@ -1,0 +1,73 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Esquema de respuesta al obtener todos los planetas",
+    "properties": {
+        "status": {
+            "type": "string"
+        },
+        "code": {
+            "type": "number"
+        },
+        "message": {
+            "type": "string"
+        },
+        "number_records": {
+            "type": "number"
+        },
+        "object": {
+            "$ref": "#/definitions/planet"
+        }
+    },
+    "definitions": {
+        "planet": {
+            "description": "Esquema de planeta",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "nombre": {
+                    "type": "string"
+                },
+                "periodo_rotacion": {
+                    "type": "string"
+                },
+                "periodo_orbital": {
+                    "type": "string"
+                },
+                "diametro": {
+                    "type": "string"
+                },
+                "clima": {
+                    "type": "string"
+                },
+                "gravedad": {
+                    "type": "string"
+                },
+                "terreno": {
+                    "type": "string"
+                },
+                "superficie_agua": {
+                    "type": "string"
+                },
+                "poblacion": {
+                    "type": "string"
+                },
+                "residentes": {
+                    "type": "object"
+                },
+                "peliculas": {
+                    "type": "object"
+                },
+                "creado": {
+                    "type": "string"
+                },
+                "editado": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
