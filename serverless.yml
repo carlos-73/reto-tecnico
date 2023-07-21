@@ -1,0 +1,91 @@
+service: reto-tecnico
+
+frameworkVersion: "3"
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  lambdaHashingVersion: '20201221'
+  stage: ${opt:stage, 'dev'}
+  environment:
+    VEHICLE_DYNAMODB_TABLE: ${self:service}-${sls:stage}-vehicle
+  httpApi:
+    cors: true
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+          Resource: "arn:aws:dynamodb:${aws:region}:*:table/${self:provider.environment.VEHICLE_DYNAMODB_TABLE}"
+
+functions:
+  createVehicle:
+    handler: src/main/app/vehicle/controllers/Vehicle.createVehicle
+    events:
+      - httpApi:
+          path: /vehicle
+          method: post
+
+  getAllVehicles:
+    handler: src/main/app/vehicle/controllers/Vehicle.getAllVehicles
+    events:
+      - httpApi:
+          path: /vehicle
+          method: get
+
+  getVehicleById:
+    handler: src/main/app/vehicle/controllers/Vehicle.getVehicleById
+    events:
+      - httpApi:
+          path: /vehicle/{id}
+          method: get
+
+  updateVehicle:
+    handler: src/main/app/vehicle/controllers/Vehicle.updateVehicle
+    events:
+      - httpApi:
+          path: /vehicle/{id}
+          method: put
+
+  deleteVehicle:
+    handler: src/main/app/vehicle/controllers/Vehicle.deleteVehicle
+    events:
+      - httpApi:
+          path: /vehicle/{id}
+          method: delete
+
+resources:
+  Resources:
+    vehicleTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Retain
+      Properties:
+        TableName: ${self:provider.environment.VEHICLE_DYNAMODB_TABLE}
+        AttributeDefinitions:
+          -
+            AttributeName: id
+            AttributeType: S
+          -
+            AttributeName: nombre
+            AttributeType: S
+        KeySchema:
+          -
+            AttributeName: id
+            KeyType: HASH
+        GlobalSecondaryIndexes:
+          - IndexName: nombreGlobalIndex
+            KeySchema:
+              - AttributeName: nombre
+                KeyType: HASH
+            Projection:
+              ProjectionType: 'ALL'
+        BillingMode: PAY_PER_REQUEST

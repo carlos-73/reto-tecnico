@@ -1,0 +1,31 @@
+{
+  "name": "reto-tecnico",
+  "version": "1.0.0",
+  "description": "Reto tecnico",
+  "main": "index.js",
+  "scripts": {
+    "start": "sls offline start",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "nodemon": "nodemon --exec sls offline start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlos-73/reto-tecnico.git"
+  },
+  "author": "Carlos Sullon Chavez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/carlos-73/reto-tecnico/issues"
+  },
+  "homepage": "https://github.com/carlos-73/reto-tecnico#readme",
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "serverless-offline": "^12.0.4"
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "dynamoose": "^3.2.0",
+    "joi": "^17.9.2",
+    "uuid": "^9.0.0"
+  }
+}
