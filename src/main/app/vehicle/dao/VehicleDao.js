@@ -19,13 +19,6 @@ module.exports = {
       throw error;
     }
   },
-  async getAllVehiclesByFilters() {
-    try {
-      return await vehicleSchema.scan().exec();
-    } catch (error) {
-      throw error;
-    }
-  },
   async getAllVehiclesExternal() {
     try {
       const url = `${SWAPI_BASE_URL}vehicles`;
