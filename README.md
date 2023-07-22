@@ -61,3 +61,7 @@ _Ejecutar comando para realizar el despliegue_
 ```
 npm run deploy
 ```
+*********************************************************************************************************
+:warning: **¡IMPORTANTE!** :warning:  
+**Para realizar el despliegue es necesario que el usuario/rol posea las politicas necesarias para desplegar los siguientes servicios: CloudFormation, IAM, S3, API Gateway, CloudWatch Logs, DynamoDb y Lambda**
+*********************************************************************************************************

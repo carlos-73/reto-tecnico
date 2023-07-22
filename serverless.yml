@@ -19,13 +19,17 @@ provider:
       statements:
         - Effect: Allow
           Action:
-            - dynamodb:Query
-            - dynamodb:Scan
-            - dynamodb:GetItem
-            - dynamodb:PutItem
-            - dynamodb:UpdateItem
-            - dynamodb:DeleteItem
-          Resource: "arn:aws:dynamodb:${aws:region}:*:table/${self:provider.environment.VEHICLE_DYNAMODB_TABLE}"
+            - 'cloudformation:*'
+            - 'iam:*'
+            - 'lambda:*'
+            - 'logs:*'
+            - 'apigateway:*'
+            - 'execute-api:*'
+            - 'dynamodb:*'
+            - 'cloudwatch:*'
+            - 'events:*'
+            - 's3:*'
+          Resource: "*"
 
 functions:
   createVehicle:

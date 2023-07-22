@@ -2,7 +2,6 @@
 
 const validator = require('./Validator');
 const service = require('../services/VehicleService');
-const { HTTP_STATUS_CODE_INTERNAL_ERROR } = require('../utils/Constants');
 
 module.exports = {
   async createVehicle(event) {
@@ -16,7 +15,7 @@ module.exports = {
     } catch (error) {
       console.error(error);
       return {
-        statusCode: error.statusCode || error.httpCode || HTTP_STATUS_CODE_INTERNAL_ERROR,
+        statusCode: error.statusCode,
         body: JSON.stringify(error),
       };
     }
@@ -32,14 +31,14 @@ module.exports = {
     } catch (error) {
       console.error(error);
       return {
-        statusCode: error.statusCode || error.httpCode || HTTP_STATUS_CODE_INTERNAL_ERROR,
+        statusCode: error.statusCode,
         body: JSON.stringify(error),
       };
     }
   },
   async getAllVehicles(event) {
     try {
-      const request = await validator.getAllVehiclesValidator(event.queryStringParameters || {});
+      const request = await validator.getAllVehiclesValidator(event.queryStringParameters);
       const result = await service.getAllVehicles(request);
       return {
         statusCode: result.code,
@@ -48,7 +47,7 @@ module.exports = {
     } catch (error) {
       console.error(error);
       return {
-        statusCode: error.statusCode || error.httpCode || HTTP_STATUS_CODE_INTERNAL_ERROR,
+        statusCode: error.statusCode,
         body: JSON.stringify(error),
       };
     }
@@ -64,7 +63,7 @@ module.exports = {
     } catch (error) {
       console.error(error);
       return {
-        statusCode: error.statusCode || error.httpCode || HTTP_STATUS_CODE_INTERNAL_ERROR,
+        statusCode: error.statusCode,
         body: JSON.stringify(error),
       };
     }
@@ -80,7 +79,7 @@ module.exports = {
     } catch (error) {
       console.error(error);
       return {
-        statusCode: error.statusCode || error.httpCode || HTTP_STATUS_CODE_INTERNAL_ERROR,
+        statusCode: error.statusCode,
         body: JSON.stringify(error),
       };
     }

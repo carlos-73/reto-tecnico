@@ -59,6 +59,7 @@ module.exports = {
           listVehicles.results
         );
       }
+      delete request.fuente;
       const vehicle = await dao.getAllVehicles(request);
       if (vehicle.count == 0) {
         throw { statusCode: HTTP_STATUS_CODE_NOT_FOUND, message: "Vehiculos no encontrados" }
@@ -79,7 +80,7 @@ module.exports = {
       const { nombre } = request;
       const vehicle = await dao.getVehicleByName(nombre);
       if (vehicle.count > 0) {
-        throw { statusCode: HTTP_STATUS_CODE_BAD_REQUEST, message: "Nombre de vehiculo existente" }
+        throw { statusCode: HTTP_STATUS_CODE_BAD_REQUEST, message: "Nombre de vehiculo existente" };
       }
       const result = await dao.updateVehicle(request);
       return new myGenericResponse(
@@ -98,7 +99,7 @@ module.exports = {
       const { id } = request;
       const vehicle = await dao.getVehicleById(id);
       if (vehicle.count == 0) {
-        throw { statusCode: HTTP_STATUS_CODE_NOT_FOUND, message: "Vehiculo no encontrado" }
+        throw { statusCode: HTTP_STATUS_CODE_NOT_FOUND, message: "Vehiculo no encontrado" };
       }
       const result = await dao.deleteVehicle(id);
       return new myGenericResponse(

@@ -16,14 +16,6 @@ module.exports = {
       })
       return await vehicleSchema.scan(query).exec();
     } catch (error) {
-      console.error(error);
-      throw error;
-    }
-  },
-  async getAllVehiclesByFilters() {
-    try {
-      return await vehicleSchema.scan().exec();
-    } catch (error) {
       throw error;
     }
   },
