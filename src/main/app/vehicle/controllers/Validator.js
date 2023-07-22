@@ -1,4 +1,5 @@
 const Joi = require('joi');
+const { HTTP_STATUS_CODE_BAD_REQUEST } = require('../utils/Constants');
 
 module.exports = {
   async createVehicleValidator(body) {
@@ -58,7 +59,7 @@ module.exports = {
       return await schema.validateAsync(body);
     }
     catch (err) {
-      throw err.details;
+      throw { statusCode: HTTP_STATUS_CODE_BAD_REQUEST, details: err.details };
     }
   },
   async getVehicleByIdValidator(body) {
@@ -71,7 +72,7 @@ module.exports = {
       return await schema.validateAsync(body);
     }
     catch (err) {
-      throw err.details;
+      throw { statusCode: HTTP_STATUS_CODE_BAD_REQUEST, details: err.details };
     }
   },
   async getAllVehiclesValidator(body) {
@@ -128,7 +129,7 @@ module.exports = {
       return await schema.validateAsync(body);
     }
     catch (err) {
-      throw err.details;
+      throw { statusCode: HTTP_STATUS_CODE_BAD_REQUEST, details: err.details };
     }
   },
   async updateVehicleValidator(body) {
@@ -191,7 +192,7 @@ module.exports = {
       return await schema.validateAsync(body);
     }
     catch (err) {
-      throw err.details;
+      throw { statusCode: HTTP_STATUS_CODE_BAD_REQUEST, details: err.details };
     }
   },
   async deleteVehicleValidator(body) {
@@ -204,7 +205,7 @@ module.exports = {
       return await schema.validateAsync(body);
     }
     catch (err) {
-      throw err.details;
+      throw { statusCode: HTTP_STATUS_CODE_BAD_REQUEST, details: err.details };
     }
   },
 };

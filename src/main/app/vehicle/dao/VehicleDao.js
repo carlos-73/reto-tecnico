@@ -16,7 +16,6 @@ module.exports = {
       })
       return await vehicleSchema.scan(query).exec();
     } catch (error) {
-      console.error(error);
       throw error;
     }
   },
