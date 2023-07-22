@@ -6,7 +6,9 @@
   "scripts": {
     "start": "sls offline start",
     "nodemon": "nodemon --exec sls offline start",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "documentation": "",
+    "deploy": "sls deploy --verbose"
   },
   "repository": {
     "type": "git",
