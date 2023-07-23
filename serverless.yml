@@ -3,6 +3,7 @@ service: reto-tecnico
 frameworkVersion: "3"
 
 plugins:
+  - serverless-openapi-documentation
   - serverless-offline
 
 provider:
@@ -12,8 +13,6 @@ provider:
   stage: ${opt:stage, 'dev'}
   environment:
     VEHICLE_DYNAMODB_TABLE: ${self:service}-${sls:stage}-vehicle
-  httpApi:
-    cors: true
   iam:
     role:
       statements:
@@ -35,37 +34,42 @@ functions:
   createVehicle:
     handler: src/main/app/vehicle/controllers/Vehicle.createVehicle
     events:
-      - httpApi:
+      - http:
           path: /vehicle
           method: post
+          cors: true
 
   getAllVehicles:
     handler: src/main/app/vehicle/controllers/Vehicle.getAllVehicles
     events:
-      - httpApi:
+      - http:
           path: /vehicle
           method: get
+          cors: true
 
   getVehicleById:
     handler: src/main/app/vehicle/controllers/Vehicle.getVehicleById
     events:
-      - httpApi:
+      - http:
           path: /vehicle/{id}
           method: get
+          cors: true
 
   updateVehicle:
     handler: src/main/app/vehicle/controllers/Vehicle.updateVehicle
     events:
-      - httpApi:
+      - http:
           path: /vehicle/{id}
           method: put
+          cors: true
 
   deleteVehicle:
     handler: src/main/app/vehicle/controllers/Vehicle.deleteVehicle
     events:
-      - httpApi:
+      - http:
           path: /vehicle/{id}
           method: delete
+          cors: true
 
 resources:
   Resources:
