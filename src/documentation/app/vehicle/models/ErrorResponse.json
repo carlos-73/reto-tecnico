@@ -1,0 +1,28 @@
+{
+  "title": "Esquema de Respuesta de Error",
+  "description": "Esquema perteneciente a una respuesta de error del API invocado",
+  "type": "object",
+  "required": [
+    "statusCode",
+    "message"
+  ],
+  "properties": {
+    "statusCode": {
+      "$ref": "#/definitions/statusCode"
+    },
+    "message": {
+      "$ref": "#/definitions/message"
+    }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "statusCode": {
+      "description": "Codigo de estado de la respuesta del API",
+      "type": "integer"
+    },
+    "message": {
+      "description": "Mensaje de respuesta del API",
+      "type": "string"
+    }
+  }
+}

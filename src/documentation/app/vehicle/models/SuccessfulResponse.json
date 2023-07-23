@@ -1,0 +1,53 @@
+{
+  "title": "Esquema de Respuesta Satisfactoria",
+  "description": "Esquema perteneciente a una respuesta satisfactoria del API invocado",
+  "type": "object",
+  "required": [
+    "status",
+    "code",
+    "message",
+    "number_records",
+    "object"
+  ],
+  "properties": {
+    "status": {
+      "$ref": "#/definitions/status"
+    },
+    "code": {
+      "$ref": "#/definitions/code"
+    },
+    "message": {
+      "$ref": "#/definitions/message"
+    },
+    "number_records": {
+      "$ref": "#/definitions/number_records"
+    },
+    "object": {
+      "$ref": "#/definitions/object"
+    }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "status": {
+      "description": "Descripción del estado de la respuesta del API",
+      "type": "string"
+    },
+    "code": {
+      "description": "Codigo de estado de la respuesta del API",
+      "type": "integer"
+    },
+    "message": {
+      "description": "Mensaje de respuesta del API",
+      "type": "string"
+    },
+    "number_records": {
+      "description": "Número de registros manipulados",
+      "type": "integer"
+    },
+    "object": {
+      "description": "Datos de respuesta de la operación realizada",
+      "type": "object",
+      "additionalProperties": true
+    }
+  }
+}

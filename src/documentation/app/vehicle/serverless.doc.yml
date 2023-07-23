@@ -1,0 +1,267 @@
+documentation:
+  version: '1'
+  title: 'Documentación - Reto Técnico'
+  description: |-
+    Esta es la documentación del Reto Tecnico basado en las especificaciones de OpenAPI 3.0.
+
+    Algunos links que te pueden interesar:
+    - [Repositorio](https://github.com/carlos-73/reto-tecnico)
+    - [Archivo de configuración de la documentación](https://github.com/carlos-73/reto-tecnico/blob/main/openapi.yaml)
+  contact:
+    name: Carlos Sullon
+    email: carlossch58@gmail.com
+  externalDocumentation:
+    description: Más sobre Swagger
+    url: http://swagger.io
+  servers:
+    - url: https://reto-tecnico.com
+  tags:
+    - name: Vehículo
+      description: Operaciones referentes al Vehículo
+  models:
+    - name: Vehicle
+      description: Vehículo de Star Wars
+      contentType: "application/json"
+      schema: ${file(./src/documentation/app/vehicle/models/Vehicle.json)}
+    - name: SuccessfulApiResponse
+      description: Esquema de respuesta satisfactoria del API
+      contentType: "application/json"
+      schema: ${file(./src/documentation/app/vehicle/models/SuccessfulResponse.json)}
+    - name: ErrorResponse
+      description: Esquema de respuesta de error del API
+      contentType: "application/json"
+      schema: ${file(./src/documentation/app/vehicle/models/ErrorResponse.json)}
+
+endpoints:
+  createVehicle:
+    summary: Registrar vehículo
+    description: Endpoint para registrar un nuevo vehículo
+    operationId: createVehicle
+    tags:
+      - Vehículo
+    requestBody:
+      description: Modelo de petición para la creación de un nuevo vehículo
+    requestModels:
+      application/json: Vehicle
+    methodResponses:
+      - statusCode: 200
+        responseBody:
+          description: Modelo de respuesta satisfactoria
+        responseModels:
+          application/json: SuccessfulApiResponse
+      - statusCode: 400
+        responseBody:
+          description: Modelo de respuesta de error para cuando se envía una petición invalida
+        responseModels:
+          application/json: ${file(./src/documentation/app/vehicle/models/ErrorResponse.json)}
+      - statusCode: 404
+        responseBody:
+          description: Modelo de respuesta de error para cuando no se encuentra el recurso solicitado
+        responseModels:
+          application/json: ${file(./src/documentation/app/vehicle/models/ErrorResponse.json)}
+      - statusCode: 500
+        responseBody:
+          description: Modelo de respuesta de error de servidor
+        responseModels:
+          application/json: ${file(./src/documentation/app/vehicle/models/ErrorResponse.json)}
+  getAllVehicles:
+    summary: Obtener todos los vehículos
+    description: |-
+      Endpoint para obtener todos los vehículos.
+      Existen dos formas de obtener todos los vehículos:
+      * Fuente externa:
+        Utilizando la API de prueba -> [StarWars API](https://swapi.py4e.com/documentation)
+        + Para realizar esta acción es necesario:
+          - Enviar como query params la propiedad "fuente" con el valor "externa". Ejemplo [...]/vehicle?fuente=externa
+      * Fuente interna:
+        Utilizando la base de datos integrada al API
+        + Para realizar esta acción es necesario:
+          - Enviar como query params la propiedad "fuente" con el valor "interna" o no enviar valor. Ejemplo [...]/vehicle?fuente=
+    operationId: getAllVehicles
+    tags:
+      - Vehículo
+    queryParams:
+      - name: fuente
+        description: Fuente que se va utilizar para obtener la lista de vehículos
+        required: true
+        schema:
+          type: string
+          enum:
+            - externa
+            - interna
+      - name: nombre
+        description: Nombre del vehículo
+        schema:
+          type: string
+      - name: modelo
+        description: Modelo del vehículo
+        schema:
+          type: string
+      - name: fabricante
+        description: Fabricante del vehículo
+        schema:
+          type: string
+      - name: costo_en_creditos
+        description: Costo del vehículo en créditos
+        schema:
+          type: integer
+      - name: longitud
+        description: Longitud del vehículo
+        schema:
+          type: integer
+      - name: maxima_velocidad_atmosferica
+        description: Máxima velocidad atmosférica alcanzada por el vehículo
+        schema:
+          type: integer
+      - name: equipo
+        description: Cantidad de equipo necesario
+        schema:
+          type: integer
+      - name: pasajeros
+        description: Cantidad de pasajeros permitidos
+        schema:
+          type: integer
+      - name: capacidad_carga
+        description: Capacidad de carga del vehículo
+        schema:
+          type: integer
+      - name: consumibles
+        description: Cantidad de consumibles
+        schema:
+          type: integer
+      - name: clase_vehiculo
+        description: Clase del vehículo
+        schema:
+          type: string
+      - name: url
+        description: Url del vehículo
+        schema:
+          type: string
+    methodResponses:
+      - statusCode: 200
+        responseBody:
+          description: Modelo de respuesta satisfactoria
+        responseModels:
+          application/json: SuccessfulApiResponse
+      - statusCode: 400
+        responseBody:
+          description: Modelo de respuesta de error para cuando se envía una petición invalida
+        responseModels:
+          application/json: ErrorResponse
+      - statusCode: 404
+        responseBody:
+          description: Modelo de respuesta de error para cuando no se encuentra el recurso solicitado
+        responseModels:
+          application/json: ErrorResponse
+      - statusCode: 500
+        responseBody:
+          description: Modelo de respuesta de error de servidor
+        responseModels:
+          application/json: ErrorResponse
+  getVehicleById:
+    summary: Obtener vehículo
+    description: Endpoint para obtener un vehículo utilizando su Id
+    operationId: getVehicleById
+    tags:
+      - Vehículo
+    pathParams:
+      - name: id
+        description: Identificador que se va utilizar para obtener el vehículo
+        required: true
+        schema:
+          type: string
+          pattern: /^[0-9A-F]{8}-[0-9A-F]{4}-[1][0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i
+    methodResponses:
+      - statusCode: 200
+        responseBody:
+          description: Modelo de respuesta satisfactoria
+        responseModels:
+          application/json: SuccessfulApiResponse
+      - statusCode: 400
+        responseBody:
+          description: Modelo de respuesta de error para cuando se envía una petición invalida
+        responseModels:
+          application/json: ErrorResponse
+      - statusCode: 404
+        responseBody:
+          description: Modelo de respuesta de error para cuando no se encuentra el recurso solicitado
+        responseModels:
+          application/json: ErrorResponse
+      - statusCode: 500
+        responseBody:
+          description: Modelo de respuesta de error de servidor
+        responseModels:
+          application/json: ErrorResponse
+  updateVehicle:
+    summary: Modificar vehículo
+    description: Endpoint para modificar los datos de un vehículo
+    operationId: updateVehicle
+    tags:
+      - Vehículo
+    pathParams:
+      - name: id
+        description: Identificador que se va utilizar para modificar los datos del vehículo
+        required: true
+        schema:
+          type: string
+          pattern: /^[0-9A-F]{8}-[0-9A-F]{4}-[1][0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i
+    requestBody:
+      description: Modelo de petición para modificar un vehículo
+    requestModels:
+      application/json:
+        schema: ${file(./src/documentation/app/vehicle/models/UpdateVehicle.json)}
+    methodResponses:
+      - statusCode: 200
+        responseBody:
+          description: Modelo de respuesta satisfactoria
+        responseModels:
+          application/json: SuccessfulApiResponse
+      - statusCode: 400
+        responseBody:
+          description: Modelo de respuesta de error para cuando se envía una petición invalida
+        responseModels:
+          application/json: ErrorResponse
+      - statusCode: 404
+        responseBody:
+          description: Modelo de respuesta de error para cuando no se encuentra el recurso solicitado
+        responseModels:
+          application/json: ErrorResponse
+      - statusCode: 500
+        responseBody:
+          description: Modelo de respuesta de error de servidor
+        responseModels:
+          application/json: ErrorResponse
+  deleteVehicle:
+    summary: Eliminar vehículo
+    description: Endpoint para eliminar un vehículo utilizando su Id
+    operationId: deleteVehicle
+    tags:
+      - Vehículo
+    pathParams:
+      - name: id
+        description: Identificador que se va utilizar para eliminar el vehículo
+        required: true
+        schema:
+          type: string
+          pattern: /^[0-9A-F]{8}-[0-9A-F]{4}-[1][0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i
+    methodResponses:
+      - statusCode: 200
+        responseBody:
+          description: Modelo de respuesta satisfactoria
+        responseModels:
+          application/json: SuccessfulApiResponse
+      - statusCode: 400
+        responseBody:
+          description: Modelo de respuesta de error para cuando se envía una petición invalida
+        responseModels:
+          application/json: ErrorResponse
+      - statusCode: 404
+        responseBody:
+          description: Modelo de respuesta de error para cuando no se encuentra el recurso solicitado
+        responseModels:
+          application/json: ErrorResponse
+      - statusCode: 500
+        responseBody:
+          description: Modelo de respuesta de error de servidor
+        responseModels:
+          application/json: ErrorResponse
