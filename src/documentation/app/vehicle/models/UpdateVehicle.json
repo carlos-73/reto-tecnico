@@ -1,0 +1,117 @@
+{
+  "title": "Esquema para Modificar Vehículo",
+  "description": "Modelo de petición para modificar un vehículo",
+  "type": "object",
+  "required": [],
+  "properties": {
+    "nombre": {
+      "$ref": "#/definitions/nombre"
+    },
+    "modelo": {
+      "$ref": "#/definitions/modelo"
+    },
+    "fabricante": {
+      "$ref": "#/definitions/fabricante"
+    },
+    "costo_en_creditos": {
+      "$ref": "#/definitions/costo_en_creditos"
+    },
+    "longitud": {
+      "$ref": "#/definitions/longitud"
+    },
+    "maxima_velocidad_atmosferica": {
+      "$ref": "#/definitions/maxima_velocidad_atmosferica"
+    },
+    "equipo": {
+      "$ref": "#/definitions/equipo"
+    },
+    "pasajeros": {
+      "$ref": "#/definitions/pasajeros"
+    },
+    "capacidad_carga": {
+      "$ref": "#/definitions/capacidad_carga"
+    },
+    "consumibles": {
+      "$ref": "#/definitions/consumibles"
+    },
+    "clase_vehiculo": {
+      "$ref": "#/definitions/clase_vehiculo"
+    },
+    "pilotos": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/piloto"
+      },
+      "uniqueItems": true
+    },
+    "peliculas": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/pelicula"
+      },
+      "uniqueItems": true
+    },
+    "url": {
+      "$ref": "#/definitions/url"
+    }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "nombre": {
+      "description": "Nombre del vehículo",
+      "type": "string"
+    },
+    "modelo": {
+      "description": "Modelo del vehículo",
+      "type": "string"
+    },
+    "fabricante": {
+      "description": "Fabricante del vehículo",
+      "type": "string"
+    },
+    "costo_en_creditos": {
+      "description": "Costo del vehículo en créditos",
+      "type": "string"
+    },
+    "longitud": {
+      "description": "Longitud del vehículo",
+      "type": "string"
+    },
+    "maxima_velocidad_atmosferica": {
+      "description": "Máxima velocidad atmosférica del vehículo",
+      "type": "string"
+    },
+    "equipo": {
+      "description": "Cantidad de equipo necesario",
+      "type": "string"
+    },
+    "pasajeros": {
+      "description": "Cantidad de pasajeros permitidos",
+      "type": "string"
+    },
+    "capacidad_carga": {
+      "description": "Capacidad de carga del vehículo",
+      "type": "string"
+    },
+    "consumibles": {
+      "description": "Cantidad de consumibles",
+      "type": "string"
+    },
+    "clase_vehiculo": {
+      "description": "Clase del vehículo",
+      "type": "string"
+    },
+    "piloto": {
+      "description": "Piloto del vehículo",
+      "type": "string"
+    },
+    "pelicula": {
+      "description": "Pelicula donde aparece el vehículo",
+      "type": "string"
+    },
+    "url": {
+      "description": "Url del vehículo",
+      "type": "string"
+    }
+  }
+}

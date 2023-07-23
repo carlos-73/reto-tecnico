@@ -3,7 +3,11 @@ service: reto-tecnico
 frameworkVersion: "3"
 
 plugins:
+  - serverless-openapi-documenter
   - serverless-offline
+
+custom:
+  documentation: ${file(./src/documentation/app/vehicle/serverless.doc.yml):documentation}
 
 provider:
   name: aws
@@ -12,8 +16,6 @@ provider:
   stage: ${opt:stage, 'dev'}
   environment:
     VEHICLE_DYNAMODB_TABLE: ${self:service}-${sls:stage}-vehicle
-  httpApi:
-    cors: true
   iam:
     role:
       statements:
@@ -35,37 +37,63 @@ functions:
   createVehicle:
     handler: src/main/app/vehicle/controllers/Vehicle.createVehicle
     events:
-      - httpApi:
+      - http:
           path: /vehicle
           method: post
+          cors: true
+          documentation: ${file(./src/documentation/app/vehicle/serverless.doc.yml):endpoints.createVehicle}
 
   getAllVehicles:
     handler: src/main/app/vehicle/controllers/Vehicle.getAllVehicles
     events:
-      - httpApi:
+      - http:
           path: /vehicle
           method: get
+          cors: true
+          request:
+            parameters:
+              querystrings:
+                fuente: true
+          documentation: ${file(./src/documentation/app/vehicle/serverless.doc.yml):endpoints.getAllVehicles}
 
   getVehicleById:
     handler: src/main/app/vehicle/controllers/Vehicle.getVehicleById
     events:
-      - httpApi:
+      - http:
           path: /vehicle/{id}
           method: get
+          cors: true
+          request:
+            parameters:
+              paths:
+                id: true
+          documentation: ${file(./src/documentation/app/vehicle/serverless.doc.yml):endpoints.getVehicleById}
 
   updateVehicle:
     handler: src/main/app/vehicle/controllers/Vehicle.updateVehicle
     events:
-      - httpApi:
+      - http:
           path: /vehicle/{id}
           method: put
+          cors: true
+          request:
+            parameters:
+              paths:
+                id: true
+          documentation: ${file(./src/documentation/app/vehicle/serverless.doc.yml):endpoints.updateVehicle}
 
   deleteVehicle:
     handler: src/main/app/vehicle/controllers/Vehicle.deleteVehicle
     events:
-      - httpApi:
+      - http:
           path: /vehicle/{id}
           method: delete
+          cors: true
+          request:
+            parameters:
+              paths:
+                id: true
+          documentation: ${file(./src/documentation/app/vehicle/serverless.doc.yml):endpoints.deleteVehicle}
 
 resources:
   Resources:

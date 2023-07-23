@@ -1,0 +1,1004 @@
+openapi: 3.0.0
+components:
+  schemas:
+    Vehicle:
+      title: Esquema de Vehículo
+      description: Esquema perteneciente a un Vehículo de Star Wars
+      type: object
+      required:
+        - nombre
+        - modelo
+        - fabricante
+        - costo_en_creditos
+        - longitud
+        - maxima_velocidad_atmosferica
+        - equipo
+        - pasajeros
+        - capacidad_carga
+        - consumibles
+        - clase_vehiculo
+        - pilotos
+        - peliculas
+        - url
+      properties:
+        nombre:
+          description: Nombre del vehículo
+          type: string
+        modelo:
+          description: Modelo del vehículo
+          type: string
+        fabricante:
+          description: Fabricante del vehículo
+          type: string
+        costo_en_creditos:
+          description: Costo del vehículo en créditos
+          type: string
+        longitud:
+          description: Longitud del vehículo
+          type: string
+        maxima_velocidad_atmosferica:
+          description: Máxima velocidad atmosférica del vehículo
+          type: string
+        equipo:
+          description: Cantidad de equipo necesario
+          type: string
+        pasajeros:
+          description: Cantidad de pasajeros permitidos
+          type: string
+        capacidad_carga:
+          description: Capacidad de carga del vehículo
+          type: string
+        consumibles:
+          description: Cantidad de consumibles
+          type: string
+        clase_vehiculo:
+          description: Clase del vehículo
+          type: string
+        pilotos:
+          type: array
+          items:
+            description: Piloto del vehículo
+            type: string
+          uniqueItems: true
+        peliculas:
+          type: array
+          items:
+            description: Pelicula donde aparece el vehículo
+            type: string
+          uniqueItems: true
+        url:
+          description: Url del vehículo
+          type: string
+      additionalProperties: false
+    SuccessfulApiResponse:
+      title: Esquema de Respuesta Satisfactoria
+      description: Esquema perteneciente a una respuesta satisfactoria del API invocado
+      type: object
+      required:
+        - status
+        - code
+        - message
+        - number_records
+        - object
+      properties:
+        status:
+          description: Descripción del estado de la respuesta del API
+          type: string
+        code:
+          description: Codigo de estado de la respuesta del API
+          type: integer
+        message:
+          description: Mensaje de respuesta del API
+          type: string
+        number_records:
+          description: Número de registros manipulados
+          type: integer
+        object:
+          description: Datos de respuesta de la operación realizada
+          type: object
+          additionalProperties: true
+      additionalProperties: false
+    ErrorResponse:
+      title: Esquema de Respuesta de Error
+      description: Esquema perteneciente a una respuesta de error del API invocado
+      type: object
+      required:
+        - statusCode
+        - message
+      properties:
+        statusCode:
+          description: Codigo de estado de la respuesta del API
+          type: integer
+        message:
+          description: Mensaje de respuesta del API
+          type: string
+      additionalProperties: false
+    Access-Control-Allow-Origin:
+      type: string
+      default: '*'
+      example: https://developer.mozilla.org
+    Access-Control-Allow-Credentials:
+      type: boolean
+      default: true
+    f4ebfe4f-7714-408a-ac16-42979172b524:
+      title: Esquema de Respuesta de Error
+      description: Esquema perteneciente a una respuesta de error del API invocado
+      type: object
+      required:
+        - statusCode
+        - message
+      properties:
+        statusCode:
+          description: Codigo de estado de la respuesta del API
+          type: integer
+        message:
+          description: Mensaje de respuesta del API
+          type: string
+      additionalProperties: false
+    53b46f20-1ab7-4889-90ac-ab63820aaebc:
+      title: Esquema de Respuesta de Error
+      description: Esquema perteneciente a una respuesta de error del API invocado
+      type: object
+      required:
+        - statusCode
+        - message
+      properties:
+        statusCode:
+          description: Codigo de estado de la respuesta del API
+          type: integer
+        message:
+          description: Mensaje de respuesta del API
+          type: string
+      additionalProperties: false
+    736844ec-9794-41b4-b665-35944a469cb6:
+      title: Esquema de Respuesta de Error
+      description: Esquema perteneciente a una respuesta de error del API invocado
+      type: object
+      required:
+        - statusCode
+        - message
+      properties:
+        statusCode:
+          description: Codigo de estado de la respuesta del API
+          type: integer
+        message:
+          description: Mensaje de respuesta del API
+          type: string
+      additionalProperties: false
+    fuente:
+      type: string
+      enum:
+        - externa
+        - interna
+    nombre:
+      type: string
+    modelo:
+      type: string
+    fabricante:
+      type: string
+    costo_en_creditos:
+      type: integer
+    longitud:
+      type: integer
+    maxima_velocidad_atmosferica:
+      type: integer
+    equipo:
+      type: integer
+    pasajeros:
+      type: integer
+    capacidad_carga:
+      type: integer
+    consumibles:
+      type: integer
+    clase_vehiculo:
+      type: string
+    url:
+      type: string
+    id:
+      type: string
+      pattern: >-
+        /^[0-9A-F]{8}-[0-9A-F]{4}-[1][0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i
+    4b625fcd-20e8-4683-a195-7d868f028a7f:
+      title: Esquema para Modificar Vehículo
+      description: Modelo de petición para modificar un vehículo
+      type: object
+      properties:
+        nombre:
+          description: Nombre del vehículo
+          type: string
+        modelo:
+          description: Modelo del vehículo
+          type: string
+        fabricante:
+          description: Fabricante del vehículo
+          type: string
+        costo_en_creditos:
+          description: Costo del vehículo en créditos
+          type: string
+        longitud:
+          description: Longitud del vehículo
+          type: string
+        maxima_velocidad_atmosferica:
+          description: Máxima velocidad atmosférica del vehículo
+          type: string
+        equipo:
+          description: Cantidad de equipo necesario
+          type: string
+        pasajeros:
+          description: Cantidad de pasajeros permitidos
+          type: string
+        capacidad_carga:
+          description: Capacidad de carga del vehículo
+          type: string
+        consumibles:
+          description: Cantidad de consumibles
+          type: string
+        clase_vehiculo:
+          description: Clase del vehículo
+          type: string
+        pilotos:
+          type: array
+          items:
+            description: Piloto del vehículo
+            type: string
+          uniqueItems: true
+        peliculas:
+          type: array
+          items:
+            description: Pelicula donde aparece el vehículo
+            type: string
+          uniqueItems: true
+        url:
+          description: Url del vehículo
+          type: string
+      additionalProperties: false
+info:
+  title: Documentación - Reto Técnico
+  description: >-
+    Esta es la documentación del Reto Tecnico basado en las especificaciones de
+    OpenAPI 3.0.
+
+
+    Algunos links que te pueden interesar:
+
+    - [Repositorio](https://github.com/carlos-73/reto-tecnico)
+
+    - [Archivo de configuración de la
+    documentación](https://github.com/carlos-73/reto-tecnico/blob/main/openapi.yaml)
+  version: '1'
+  contact:
+    name: Carlos Sullon
+    email: carlossch58@gmail.com
+paths:
+  /vehicle:
+    post:
+      summary: Registrar vehículo
+      description: Endpoint para registrar un nuevo vehículo
+      operationId: createVehicle
+      parameters: []
+      tags:
+        - Vehículo
+      requestBody:
+        description: Modelo de petición para la creación de un nuevo vehículo
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Vehicle'
+      responses:
+        '200':
+          description: Modelo de respuesta satisfactoria
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessfulApiResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              description: >-
+                The Access-Control-Allow-Origin response header indicates
+                whether the response can be shared with requesting code from the
+                given
+                [origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin).
+                - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Origin'
+            Access-Control-Allow-Credentials:
+              description: >-
+                The Access-Control-Allow-Credentials response header tells
+                browsers whether to expose the response to the frontend
+                JavaScript code when the request's credentials mode
+                ([Request.credentials](https://developer.mozilla.org/en-US/docs/Web/API/Request/credentials))
+                is include. - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Credentials'
+        '400':
+          description: >-
+            Modelo de respuesta de error para cuando se envía una petición
+            invalida
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/f4ebfe4f-7714-408a-ac16-42979172b524'
+          headers:
+            Access-Control-Allow-Origin:
+              description: >-
+                The Access-Control-Allow-Origin response header indicates
+                whether the response can be shared with requesting code from the
+                given
+                [origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin).
+                - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Origin'
+            Access-Control-Allow-Credentials:
+              description: >-
+                The Access-Control-Allow-Credentials response header tells
+                browsers whether to expose the response to the frontend
+                JavaScript code when the request's credentials mode
+                ([Request.credentials](https://developer.mozilla.org/en-US/docs/Web/API/Request/credentials))
+                is include. - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Credentials'
+        '404':
+          description: >-
+            Modelo de respuesta de error para cuando no se encuentra el recurso
+            solicitado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/53b46f20-1ab7-4889-90ac-ab63820aaebc'
+          headers:
+            Access-Control-Allow-Origin:
+              description: >-
+                The Access-Control-Allow-Origin response header indicates
+                whether the response can be shared with requesting code from the
+                given
+                [origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin).
+                - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Origin'
+            Access-Control-Allow-Credentials:
+              description: >-
+                The Access-Control-Allow-Credentials response header tells
+                browsers whether to expose the response to the frontend
+                JavaScript code when the request's credentials mode
+                ([Request.credentials](https://developer.mozilla.org/en-US/docs/Web/API/Request/credentials))
+                is include. - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Credentials'
+        '500':
+          description: Modelo de respuesta de error de servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/736844ec-9794-41b4-b665-35944a469cb6'
+          headers:
+            Access-Control-Allow-Origin:
+              description: >-
+                The Access-Control-Allow-Origin response header indicates
+                whether the response can be shared with requesting code from the
+                given
+                [origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin).
+                - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Origin'
+            Access-Control-Allow-Credentials:
+              description: >-
+                The Access-Control-Allow-Credentials response header tells
+                browsers whether to expose the response to the frontend
+                JavaScript code when the request's credentials mode
+                ([Request.credentials](https://developer.mozilla.org/en-US/docs/Web/API/Request/credentials))
+                is include. - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Credentials'
+    get:
+      summary: Obtener todos los vehículos
+      description: |-
+        Endpoint para obtener todos los vehículos.
+        Existen dos formas de obtener todos los vehículos:
+        * Fuente externa:
+          Utilizando la API de prueba -> [StarWars API](https://swapi.py4e.com/documentation)
+          + Para realizar esta acción es necesario:
+            - Enviar como query params la propiedad "fuente" con el valor "externa". Ejemplo [...]/vehicle?fuente=externa
+        * Fuente interna:
+          Utilizando la base de datos integrada al API
+          + Para realizar esta acción es necesario:
+            - Enviar como query params la propiedad "fuente" con el valor "interna" o no enviar valor. Ejemplo [...]/vehicle?fuente=
+      operationId: getAllVehicles
+      parameters:
+        - name: fuente
+          in: query
+          description: Fuente que se va utilizar para obtener la lista de vehículos
+          required: true
+          schema:
+            $ref: '#/components/schemas/fuente'
+        - name: nombre
+          in: query
+          description: Nombre del vehículo
+          required: false
+          schema:
+            $ref: '#/components/schemas/nombre'
+        - name: modelo
+          in: query
+          description: Modelo del vehículo
+          required: false
+          schema:
+            $ref: '#/components/schemas/modelo'
+        - name: fabricante
+          in: query
+          description: Fabricante del vehículo
+          required: false
+          schema:
+            $ref: '#/components/schemas/fabricante'
+        - name: costo_en_creditos
+          in: query
+          description: Costo del vehículo en créditos
+          required: false
+          schema:
+            $ref: '#/components/schemas/costo_en_creditos'
+        - name: longitud
+          in: query
+          description: Longitud del vehículo
+          required: false
+          schema:
+            $ref: '#/components/schemas/longitud'
+        - name: maxima_velocidad_atmosferica
+          in: query
+          description: Máxima velocidad atmosférica alcanzada por el vehículo
+          required: false
+          schema:
+            $ref: '#/components/schemas/maxima_velocidad_atmosferica'
+        - name: equipo
+          in: query
+          description: Cantidad de equipo necesario
+          required: false
+          schema:
+            $ref: '#/components/schemas/equipo'
+        - name: pasajeros
+          in: query
+          description: Cantidad de pasajeros permitidos
+          required: false
+          schema:
+            $ref: '#/components/schemas/pasajeros'
+        - name: capacidad_carga
+          in: query
+          description: Capacidad de carga del vehículo
+          required: false
+          schema:
+            $ref: '#/components/schemas/capacidad_carga'
+        - name: consumibles
+          in: query
+          description: Cantidad de consumibles
+          required: false
+          schema:
+            $ref: '#/components/schemas/consumibles'
+        - name: clase_vehiculo
+          in: query
+          description: Clase del vehículo
+          required: false
+          schema:
+            $ref: '#/components/schemas/clase_vehiculo'
+        - name: url
+          in: query
+          description: Url del vehículo
+          required: false
+          schema:
+            $ref: '#/components/schemas/url'
+      tags:
+        - Vehículo
+      responses:
+        '200':
+          description: Modelo de respuesta satisfactoria
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessfulApiResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              description: >-
+                The Access-Control-Allow-Origin response header indicates
+                whether the response can be shared with requesting code from the
+                given
+                [origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin).
+                - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Origin'
+            Access-Control-Allow-Credentials:
+              description: >-
+                The Access-Control-Allow-Credentials response header tells
+                browsers whether to expose the response to the frontend
+                JavaScript code when the request's credentials mode
+                ([Request.credentials](https://developer.mozilla.org/en-US/docs/Web/API/Request/credentials))
+                is include. - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Credentials'
+        '400':
+          description: >-
+            Modelo de respuesta de error para cuando se envía una petición
+            invalida
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              description: >-
+                The Access-Control-Allow-Origin response header indicates
+                whether the response can be shared with requesting code from the
+                given
+                [origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin).
+                - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Origin'
+            Access-Control-Allow-Credentials:
+              description: >-
+                The Access-Control-Allow-Credentials response header tells
+                browsers whether to expose the response to the frontend
+                JavaScript code when the request's credentials mode
+                ([Request.credentials](https://developer.mozilla.org/en-US/docs/Web/API/Request/credentials))
+                is include. - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Credentials'
+        '404':
+          description: >-
+            Modelo de respuesta de error para cuando no se encuentra el recurso
+            solicitado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              description: >-
+                The Access-Control-Allow-Origin response header indicates
+                whether the response can be shared with requesting code from the
+                given
+                [origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin).
+                - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Origin'
+            Access-Control-Allow-Credentials:
+              description: >-
+                The Access-Control-Allow-Credentials response header tells
+                browsers whether to expose the response to the frontend
+                JavaScript code when the request's credentials mode
+                ([Request.credentials](https://developer.mozilla.org/en-US/docs/Web/API/Request/credentials))
+                is include. - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Credentials'
+        '500':
+          description: Modelo de respuesta de error de servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              description: >-
+                The Access-Control-Allow-Origin response header indicates
+                whether the response can be shared with requesting code from the
+                given
+                [origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin).
+                - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Origin'
+            Access-Control-Allow-Credentials:
+              description: >-
+                The Access-Control-Allow-Credentials response header tells
+                browsers whether to expose the response to the frontend
+                JavaScript code when the request's credentials mode
+                ([Request.credentials](https://developer.mozilla.org/en-US/docs/Web/API/Request/credentials))
+                is include. - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Credentials'
+  /vehicle/{id}:
+    get:
+      summary: Obtener vehículo
+      description: Endpoint para obtener un vehículo utilizando su Id
+      operationId: getVehicleById
+      parameters:
+        - name: id
+          in: path
+          description: Identificador que se va utilizar para obtener el vehículo
+          required: true
+          schema:
+            $ref: '#/components/schemas/id'
+      tags:
+        - Vehículo
+      responses:
+        '200':
+          description: Modelo de respuesta satisfactoria
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessfulApiResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              description: >-
+                The Access-Control-Allow-Origin response header indicates
+                whether the response can be shared with requesting code from the
+                given
+                [origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin).
+                - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Origin'
+            Access-Control-Allow-Credentials:
+              description: >-
+                The Access-Control-Allow-Credentials response header tells
+                browsers whether to expose the response to the frontend
+                JavaScript code when the request's credentials mode
+                ([Request.credentials](https://developer.mozilla.org/en-US/docs/Web/API/Request/credentials))
+                is include. - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Credentials'
+        '400':
+          description: >-
+            Modelo de respuesta de error para cuando se envía una petición
+            invalida
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              description: >-
+                The Access-Control-Allow-Origin response header indicates
+                whether the response can be shared with requesting code from the
+                given
+                [origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin).
+                - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Origin'
+            Access-Control-Allow-Credentials:
+              description: >-
+                The Access-Control-Allow-Credentials response header tells
+                browsers whether to expose the response to the frontend
+                JavaScript code when the request's credentials mode
+                ([Request.credentials](https://developer.mozilla.org/en-US/docs/Web/API/Request/credentials))
+                is include. - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Credentials'
+        '404':
+          description: >-
+            Modelo de respuesta de error para cuando no se encuentra el recurso
+            solicitado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              description: >-
+                The Access-Control-Allow-Origin response header indicates
+                whether the response can be shared with requesting code from the
+                given
+                [origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin).
+                - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Origin'
+            Access-Control-Allow-Credentials:
+              description: >-
+                The Access-Control-Allow-Credentials response header tells
+                browsers whether to expose the response to the frontend
+                JavaScript code when the request's credentials mode
+                ([Request.credentials](https://developer.mozilla.org/en-US/docs/Web/API/Request/credentials))
+                is include. - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Credentials'
+        '500':
+          description: Modelo de respuesta de error de servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              description: >-
+                The Access-Control-Allow-Origin response header indicates
+                whether the response can be shared with requesting code from the
+                given
+                [origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin).
+                - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Origin'
+            Access-Control-Allow-Credentials:
+              description: >-
+                The Access-Control-Allow-Credentials response header tells
+                browsers whether to expose the response to the frontend
+                JavaScript code when the request's credentials mode
+                ([Request.credentials](https://developer.mozilla.org/en-US/docs/Web/API/Request/credentials))
+                is include. - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Credentials'
+    put:
+      summary: Modificar vehículo
+      description: Endpoint para modificar los datos de un vehículo
+      operationId: updateVehicle
+      parameters:
+        - name: id
+          in: path
+          description: >-
+            Identificador que se va utilizar para modificar los datos del
+            vehículo
+          required: true
+          schema:
+            $ref: '#/components/schemas/id'
+      tags:
+        - Vehículo
+      requestBody:
+        description: Modelo de petición para modificar un vehículo
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/4b625fcd-20e8-4683-a195-7d868f028a7f'
+      responses:
+        '200':
+          description: Modelo de respuesta satisfactoria
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessfulApiResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              description: >-
+                The Access-Control-Allow-Origin response header indicates
+                whether the response can be shared with requesting code from the
+                given
+                [origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin).
+                - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Origin'
+            Access-Control-Allow-Credentials:
+              description: >-
+                The Access-Control-Allow-Credentials response header tells
+                browsers whether to expose the response to the frontend
+                JavaScript code when the request's credentials mode
+                ([Request.credentials](https://developer.mozilla.org/en-US/docs/Web/API/Request/credentials))
+                is include. - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Credentials'
+        '400':
+          description: >-
+            Modelo de respuesta de error para cuando se envía una petición
+            invalida
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              description: >-
+                The Access-Control-Allow-Origin response header indicates
+                whether the response can be shared with requesting code from the
+                given
+                [origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin).
+                - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Origin'
+            Access-Control-Allow-Credentials:
+              description: >-
+                The Access-Control-Allow-Credentials response header tells
+                browsers whether to expose the response to the frontend
+                JavaScript code when the request's credentials mode
+                ([Request.credentials](https://developer.mozilla.org/en-US/docs/Web/API/Request/credentials))
+                is include. - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Credentials'
+        '404':
+          description: >-
+            Modelo de respuesta de error para cuando no se encuentra el recurso
+            solicitado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              description: >-
+                The Access-Control-Allow-Origin response header indicates
+                whether the response can be shared with requesting code from the
+                given
+                [origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin).
+                - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Origin'
+            Access-Control-Allow-Credentials:
+              description: >-
+                The Access-Control-Allow-Credentials response header tells
+                browsers whether to expose the response to the frontend
+                JavaScript code when the request's credentials mode
+                ([Request.credentials](https://developer.mozilla.org/en-US/docs/Web/API/Request/credentials))
+                is include. - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Credentials'
+        '500':
+          description: Modelo de respuesta de error de servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              description: >-
+                The Access-Control-Allow-Origin response header indicates
+                whether the response can be shared with requesting code from the
+                given
+                [origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin).
+                - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Origin'
+            Access-Control-Allow-Credentials:
+              description: >-
+                The Access-Control-Allow-Credentials response header tells
+                browsers whether to expose the response to the frontend
+                JavaScript code when the request's credentials mode
+                ([Request.credentials](https://developer.mozilla.org/en-US/docs/Web/API/Request/credentials))
+                is include. - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Credentials'
+    delete:
+      summary: Eliminar vehículo
+      description: Endpoint para eliminar un vehículo utilizando su Id
+      operationId: deleteVehicle
+      parameters:
+        - name: id
+          in: path
+          description: Identificador que se va utilizar para eliminar el vehículo
+          required: true
+          schema:
+            $ref: '#/components/schemas/id'
+      tags:
+        - Vehículo
+      responses:
+        '200':
+          description: Modelo de respuesta satisfactoria
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessfulApiResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              description: >-
+                The Access-Control-Allow-Origin response header indicates
+                whether the response can be shared with requesting code from the
+                given
+                [origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin).
+                - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Origin'
+            Access-Control-Allow-Credentials:
+              description: >-
+                The Access-Control-Allow-Credentials response header tells
+                browsers whether to expose the response to the frontend
+                JavaScript code when the request's credentials mode
+                ([Request.credentials](https://developer.mozilla.org/en-US/docs/Web/API/Request/credentials))
+                is include. - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Credentials'
+        '400':
+          description: >-
+            Modelo de respuesta de error para cuando se envía una petición
+            invalida
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              description: >-
+                The Access-Control-Allow-Origin response header indicates
+                whether the response can be shared with requesting code from the
+                given
+                [origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin).
+                - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Origin'
+            Access-Control-Allow-Credentials:
+              description: >-
+                The Access-Control-Allow-Credentials response header tells
+                browsers whether to expose the response to the frontend
+                JavaScript code when the request's credentials mode
+                ([Request.credentials](https://developer.mozilla.org/en-US/docs/Web/API/Request/credentials))
+                is include. - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Credentials'
+        '404':
+          description: >-
+            Modelo de respuesta de error para cuando no se encuentra el recurso
+            solicitado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              description: >-
+                The Access-Control-Allow-Origin response header indicates
+                whether the response can be shared with requesting code from the
+                given
+                [origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin).
+                - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Origin'
+            Access-Control-Allow-Credentials:
+              description: >-
+                The Access-Control-Allow-Credentials response header tells
+                browsers whether to expose the response to the frontend
+                JavaScript code when the request's credentials mode
+                ([Request.credentials](https://developer.mozilla.org/en-US/docs/Web/API/Request/credentials))
+                is include. - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Credentials'
+        '500':
+          description: Modelo de respuesta de error de servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              description: >-
+                The Access-Control-Allow-Origin response header indicates
+                whether the response can be shared with requesting code from the
+                given
+                [origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin).
+                - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Origin'
+            Access-Control-Allow-Credentials:
+              description: >-
+                The Access-Control-Allow-Credentials response header tells
+                browsers whether to expose the response to the frontend
+                JavaScript code when the request's credentials mode
+                ([Request.credentials](https://developer.mozilla.org/en-US/docs/Web/API/Request/credentials))
+                is include. - [MDN
+                Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials)
+              schema:
+                $ref: '#/components/schemas/Access-Control-Allow-Credentials'
+servers:
+  - url: https://reto-tecnico.com
+tags:
+  - name: Vehículo
+    description: Operaciones referentes al Vehículo
+externalDocs:
+  description: Más sobre Swagger
+  url: http://swagger.io
