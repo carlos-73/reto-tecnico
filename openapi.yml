@@ -120,7 +120,7 @@ components:
     Access-Control-Allow-Credentials:
       type: boolean
       default: true
-    f4ebfe4f-7714-408a-ac16-42979172b524:
+    a3122fa7-f5ba-4509-8a2c-ae649869ac14:
       title: Esquema de Respuesta de Error
       description: Esquema perteneciente a una respuesta de error del API invocado
       type: object
@@ -135,7 +135,7 @@ components:
           description: Mensaje de respuesta del API
           type: string
       additionalProperties: false
-    53b46f20-1ab7-4889-90ac-ab63820aaebc:
+    b67786a5-94d9-4679-980a-8d49040708d8:
       title: Esquema de Respuesta de Error
       description: Esquema perteneciente a una respuesta de error del API invocado
       type: object
@@ -150,7 +150,7 @@ components:
           description: Mensaje de respuesta del API
           type: string
       additionalProperties: false
-    736844ec-9794-41b4-b665-35944a469cb6:
+    2d5f4946-70cf-472c-9a68-7cac1d686614:
       title: Esquema de Respuesta de Error
       description: Esquema perteneciente a una respuesta de error del API invocado
       type: object
@@ -198,7 +198,7 @@ components:
       type: string
       pattern: >-
         /^[0-9A-F]{8}-[0-9A-F]{4}-[1][0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i
-    4b625fcd-20e8-4683-a195-7d868f028a7f:
+    5850b3b2-8411-43cf-a955-74e81ab784e4:
       title: Esquema para Modificar Vehículo
       description: Modelo de petición para modificar un vehículo
       type: object
@@ -264,7 +264,7 @@ info:
     - [Repositorio](https://github.com/carlos-73/reto-tecnico)
 
     - [Archivo de configuración de la
-    documentación](https://github.com/carlos-73/reto-tecnico/blob/main/openapi.yaml)
+    documentación](https://github.com/carlos-73/reto-tecnico/blob/main/openapi.yml)
   version: '1'
   contact:
     name: Carlos Sullon
@@ -320,7 +320,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/f4ebfe4f-7714-408a-ac16-42979172b524'
+                $ref: '#/components/schemas/a3122fa7-f5ba-4509-8a2c-ae649869ac14'
           headers:
             Access-Control-Allow-Origin:
               description: >-
@@ -349,7 +349,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/53b46f20-1ab7-4889-90ac-ab63820aaebc'
+                $ref: '#/components/schemas/b67786a5-94d9-4679-980a-8d49040708d8'
           headers:
             Access-Control-Allow-Origin:
               description: >-
@@ -376,7 +376,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/736844ec-9794-41b4-b665-35944a469cb6'
+                $ref: '#/components/schemas/2d5f4946-70cf-472c-9a68-7cac1d686614'
           headers:
             Access-Control-Allow-Origin:
               description: >-
@@ -754,7 +754,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/4b625fcd-20e8-4683-a195-7d868f028a7f'
+              $ref: '#/components/schemas/5850b3b2-8411-43cf-a955-74e81ab784e4'
       responses:
         '200':
           description: Modelo de respuesta satisfactoria
