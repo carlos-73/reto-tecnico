@@ -1,7 +1,7 @@
-"use strict";
-const { SWAPI_BASE_URL } = require("../utils/Constants");
-const vehicleSchema = require("./schemas/VehicleSchema");
-const axios = require("axios");
+'use strict';
+const { SWAPI_BASE_URL } = require('../utils/Constants');
+const vehicleSchema = require('./schemas/VehicleSchema');
+const axios = require('axios');
 
 module.exports = {
   async getAllVehicles(filters) {
@@ -62,5 +62,5 @@ module.exports = {
     } catch (error) {
       throw error;
     }
-  },
+  }
 };

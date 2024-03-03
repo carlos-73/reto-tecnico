@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 class MyGenericResponse {
   constructor(status, code, message, number_records, object) {
