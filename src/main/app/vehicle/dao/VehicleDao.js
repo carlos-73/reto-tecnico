@@ -1,7 +1,7 @@
-'use strict';
-const { SWAPI_BASE_URL } = require('../utils/Constants');
-const vehicleSchema = require('./schemas/VehicleSchema');
-const axios = require('axios');
+"use strict";
+const { SWAPI_BASE_URL } = require("../utils/Constants");
+const vehicleSchema = require("./schemas/VehicleSchema");
+const axios = require("axios");
 
 module.exports = {
   async getAllVehicles(filters) {
@@ -13,7 +13,7 @@ module.exports = {
       Object.entries(filters).forEach((entry) => {
         const [key, value] = entry;
         query[key] = { contains: value };
-      })
+      });
       return await vehicleSchema.scan(query).exec();
     } catch (error) {
       throw error;

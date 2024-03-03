@@ -1,12 +1,14 @@
-'use strict';
+"use strict";
 
-const validator = require('./Validator');
-const service = require('../services/VehicleService');
+const validator = require("./Validator");
+const service = require("../services/VehicleService");
 
 module.exports = {
   async createVehicle(event) {
     try {
-      const request = await validator.createVehicleValidator(JSON.parse(event.body));
+      const request = await validator.createVehicleValidator(
+        JSON.parse(event.body),
+      );
       const result = await service.createVehicle(request);
       return {
         statusCode: result.code,
@@ -22,7 +24,9 @@ module.exports = {
   },
   async getVehicleById(event) {
     try {
-      const request = await validator.getVehicleByIdValidator(event.pathParameters);
+      const request = await validator.getVehicleByIdValidator(
+        event.pathParameters,
+      );
       const result = await service.getVehicleById(request);
       return {
         statusCode: result.code,
@@ -38,7 +42,9 @@ module.exports = {
   },
   async getAllVehicles(event) {
     try {
-      const request = await validator.getAllVehiclesValidator(event.queryStringParameters);
+      const request = await validator.getAllVehiclesValidator(
+        event.queryStringParameters,
+      );
       const result = await service.getAllVehicles(request);
       return {
         statusCode: result.code,
@@ -54,7 +60,10 @@ module.exports = {
   },
   async updateVehicle(event) {
     try {
-      const request = await validator.updateVehicleValidator({...JSON.parse(event.body), id: event.pathParameters.id});
+      const request = await validator.updateVehicleValidator({
+        ...JSON.parse(event.body),
+        id: event.pathParameters.id,
+      });
       const result = await service.updateVehicle(request);
       return {
         statusCode: result.code,
@@ -70,7 +79,9 @@ module.exports = {
   },
   async deleteVehicle(event) {
     try {
-      const request = await validator.deleteVehicleValidator(event.pathParameters);
+      const request = await validator.deleteVehicleValidator(
+        event.pathParameters,
+      );
       const result = await service.deleteVehicle(request);
       return {
         statusCode: result.code,
@@ -84,4 +95,4 @@ module.exports = {
       };
     }
   },
-}
+};

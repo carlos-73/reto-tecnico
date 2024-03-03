@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 class MyGenericResponse {
   constructor(status, code, message, number_records, object) {
@@ -7,6 +7,6 @@ class MyGenericResponse {
     this.message = message;
     this.number_records = number_records;
     this.object = object;
-  };
+  }
 }
 module.exports = MyGenericResponse;

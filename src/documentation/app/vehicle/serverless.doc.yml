@@ -21,15 +21,15 @@ documentation:
   models:
     - name: Vehicle
       description: Vehículo de Star Wars
-      contentType: "application/json"
+      contentType: 'application/json'
       schema: ${file(./src/documentation/app/vehicle/models/Vehicle.json)}
     - name: SuccessfulApiResponse
       description: Esquema de respuesta satisfactoria del API
-      contentType: "application/json"
+      contentType: 'application/json'
       schema: ${file(./src/documentation/app/vehicle/models/SuccessfulResponse.json)}
     - name: ErrorResponse
       description: Esquema de respuesta de error del API
-      contentType: "application/json"
+      contentType: 'application/json'
       schema: ${file(./src/documentation/app/vehicle/models/ErrorResponse.json)}
 
 endpoints:

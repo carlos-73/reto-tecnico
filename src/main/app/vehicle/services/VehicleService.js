@@ -1,12 +1,15 @@
-'use strict';
+"use strict";
 
-const uuid = require('uuid');
-const dao = require('../dao/VehicleDao');
-const myGenericResponse = require('../models/MyGenericResponse');
+const uuid = require("uuid");
+const dao = require("../dao/VehicleDao");
+const myGenericResponse = require("../models/MyGenericResponse");
 const {
-  STATUS_OK, HTTP_STATUS_CODE_SUCCESS, HTTP_STATUS_CODE_BAD_REQUEST,
-  DEFAULT_NUMBER_OF_MANIPULATED_RECORDS, HTTP_STATUS_CODE_NOT_FOUND
-} = require('../utils/Constants');
+  STATUS_OK,
+  HTTP_STATUS_CODE_SUCCESS,
+  HTTP_STATUS_CODE_BAD_REQUEST,
+  DEFAULT_NUMBER_OF_MANIPULATED_RECORDS,
+  HTTP_STATUS_CODE_NOT_FOUND,
+} = require("../utils/Constants");
 
 module.exports = {
   async createVehicle(request) {
@@ -14,7 +17,10 @@ module.exports = {
       const { nombre } = request;
       const vehicle = await dao.getVehicleByName(nombre);
       if (vehicle.count > 0) {
-        throw { statusCode: HTTP_STATUS_CODE_BAD_REQUEST, message: "Vehiculo existente" }
+        throw {
+          statusCode: HTTP_STATUS_CODE_BAD_REQUEST,
+          message: "Vehiculo existente",
+        };
       }
       request.id = uuid.v1();
       const result = await dao.createVehicle(request);
@@ -23,7 +29,7 @@ module.exports = {
         HTTP_STATUS_CODE_SUCCESS,
         "Vehiculo creado satisfactoriamente",
         DEFAULT_NUMBER_OF_MANIPULATED_RECORDS,
-        result
+        result,
       );
     } catch (error) {
       throw error;
@@ -34,14 +40,17 @@ module.exports = {
       const { id } = request;
       const vehicle = await dao.getVehicleById(id);
       if (vehicle.count == 0) {
-        throw { statusCode: HTTP_STATUS_CODE_NOT_FOUND, message: "Vehiculo no encontrado" }
+        throw {
+          statusCode: HTTP_STATUS_CODE_NOT_FOUND,
+          message: "Vehiculo no encontrado",
+        };
       }
       return new myGenericResponse(
         STATUS_OK,
         HTTP_STATUS_CODE_SUCCESS,
         "Vehiculo encontrado",
         vehicle.count,
-        vehicle
+        vehicle,
       );
     } catch (error) {
       throw error;
@@ -49,27 +58,30 @@ module.exports = {
   },
   async getAllVehicles(request) {
     try {
-      if (request.fuente.toLowerCase() === 'externa') {
+      if (request.fuente.toLowerCase() === "externa") {
         const listVehicles = await dao.getAllVehiclesExternal();
         return new myGenericResponse(
           STATUS_OK,
           HTTP_STATUS_CODE_SUCCESS,
           "Vehiculos encontrados",
           listVehicles.count,
-          listVehicles.results
+          listVehicles.results,
         );
       }
       delete request.fuente;
       const vehicle = await dao.getAllVehicles(request);
       if (vehicle.count == 0) {
-        throw { statusCode: HTTP_STATUS_CODE_NOT_FOUND, message: "Vehiculos no encontrados" }
+        throw {
+          statusCode: HTTP_STATUS_CODE_NOT_FOUND,
+          message: "Vehiculos no encontrados",
+        };
       }
       return new myGenericResponse(
         STATUS_OK,
         HTTP_STATUS_CODE_SUCCESS,
         "Vehiculos encontrados",
         vehicle.count,
-        vehicle
+        vehicle,
       );
     } catch (error) {
       throw error;
@@ -80,7 +92,10 @@ module.exports = {
       const { nombre } = request;
       const vehicle = await dao.getVehicleByName(nombre);
       if (vehicle.count > 0) {
-        throw { statusCode: HTTP_STATUS_CODE_BAD_REQUEST, message: "Nombre de vehiculo existente" };
+        throw {
+          statusCode: HTTP_STATUS_CODE_BAD_REQUEST,
+          message: "Nombre de vehiculo existente",
+        };
       }
       const result = await dao.updateVehicle(request);
       return new myGenericResponse(
@@ -88,7 +103,7 @@ module.exports = {
         HTTP_STATUS_CODE_SUCCESS,
         "Vehiculo modificado satisfactoriamente",
         DEFAULT_NUMBER_OF_MANIPULATED_RECORDS,
-        result
+        result,
       );
     } catch (error) {
       throw error;
@@ -99,7 +114,10 @@ module.exports = {
       const { id } = request;
       const vehicle = await dao.getVehicleById(id);
       if (vehicle.count == 0) {
-        throw { statusCode: HTTP_STATUS_CODE_NOT_FOUND, message: "Vehiculo no encontrado" };
+        throw {
+          statusCode: HTTP_STATUS_CODE_NOT_FOUND,
+          message: "Vehiculo no encontrado",
+        };
       }
       const result = await dao.deleteVehicle(id);
       return new myGenericResponse(
@@ -107,7 +125,7 @@ module.exports = {
         HTTP_STATUS_CODE_SUCCESS,
         "Vehiculo eliminado satisfactoriamente",
         DEFAULT_NUMBER_OF_MANIPULATED_RECORDS,
-        result
+        result,
       );
     } catch (error) {
       throw error;
