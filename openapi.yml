@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.1.0
 components:
   schemas:
     Vehicle:
@@ -120,7 +120,7 @@ components:
     Access-Control-Allow-Credentials:
       type: boolean
       default: true
-    a3122fa7-f5ba-4509-8a2c-ae649869ac14:
+    a98db475-e230-49bc-bf37-de8e596d64a5:
       title: Esquema de Respuesta de Error
       description: Esquema perteneciente a una respuesta de error del API invocado
       type: object
@@ -135,7 +135,7 @@ components:
           description: Mensaje de respuesta del API
           type: string
       additionalProperties: false
-    b67786a5-94d9-4679-980a-8d49040708d8:
+    adc0f03d-f488-4f17-9183-f70b9c292608:
       title: Esquema de Respuesta de Error
       description: Esquema perteneciente a una respuesta de error del API invocado
       type: object
@@ -150,7 +150,7 @@ components:
           description: Mensaje de respuesta del API
           type: string
       additionalProperties: false
-    2d5f4946-70cf-472c-9a68-7cac1d686614:
+    1a16a903-0c74-4510-a006-94370da76630:
       title: Esquema de Respuesta de Error
       description: Esquema perteneciente a una respuesta de error del API invocado
       type: object
@@ -198,7 +198,7 @@ components:
       type: string
       pattern: >-
         /^[0-9A-F]{8}-[0-9A-F]{4}-[1][0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i
-    5850b3b2-8411-43cf-a955-74e81ab784e4:
+    fb2adbeb-0053-46a1-8a57-5bdf97cf3b7a:
       title: Esquema para Modificar Vehículo
       description: Modelo de petición para modificar un vehículo
       type: object
@@ -320,7 +320,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/a3122fa7-f5ba-4509-8a2c-ae649869ac14'
+                $ref: '#/components/schemas/a98db475-e230-49bc-bf37-de8e596d64a5'
           headers:
             Access-Control-Allow-Origin:
               description: >-
@@ -349,7 +349,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/b67786a5-94d9-4679-980a-8d49040708d8'
+                $ref: '#/components/schemas/adc0f03d-f488-4f17-9183-f70b9c292608'
           headers:
             Access-Control-Allow-Origin:
               description: >-
@@ -376,7 +376,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/2d5f4946-70cf-472c-9a68-7cac1d686614'
+                $ref: '#/components/schemas/1a16a903-0c74-4510-a006-94370da76630'
           headers:
             Access-Control-Allow-Origin:
               description: >-
@@ -754,7 +754,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/5850b3b2-8411-43cf-a955-74e81ab784e4'
+              $ref: '#/components/schemas/fb2adbeb-0053-46a1-8a57-5bdf97cf3b7a'
       responses:
         '200':
           description: Modelo de respuesta satisfactoria

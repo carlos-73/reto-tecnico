@@ -13,7 +13,7 @@ module.exports = {
       Object.entries(filters).forEach((entry) => {
         const [key, value] = entry;
         query[key] = { contains: value };
-      })
+      });
       return await vehicleSchema.scan(query).exec();
     } catch (error) {
       throw error;
@@ -62,5 +62,5 @@ module.exports = {
     } catch (error) {
       throw error;
     }
-  },
+  }
 };

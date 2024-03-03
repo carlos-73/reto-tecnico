@@ -7,6 +7,6 @@ class MyGenericResponse {
     this.message = message;
     this.number_records = number_records;
     this.object = object;
-  };
+  }
 }
 module.exports = MyGenericResponse;

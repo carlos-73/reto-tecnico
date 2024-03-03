@@ -1,7 +1,7 @@
 'use strict';
 
-module.exports.STATUS_OK = "success";
-module.exports.STATUS_ERROR = "error";
+module.exports.STATUS_OK = 'success';
+module.exports.STATUS_ERROR = 'error';
 module.exports.DEFAULT_NUMBER_OF_MANIPULATED_RECORDS = 1;
 module.exports.HTTP_STATUS_CODE_SUCCESS = 200;
 module.exports.HTTP_STATUS_CODE_BAD_REQUEST = 400;

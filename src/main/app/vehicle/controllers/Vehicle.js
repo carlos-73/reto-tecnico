@@ -10,13 +10,13 @@ module.exports = {
       const result = await service.createVehicle(request);
       return {
         statusCode: result.code,
-        body: JSON.stringify(result),
+        body: JSON.stringify(result)
       };
     } catch (error) {
       console.error(error);
       return {
         statusCode: error.statusCode,
-        body: JSON.stringify(error),
+        body: JSON.stringify(error)
       };
     }
   },
@@ -26,13 +26,13 @@ module.exports = {
       const result = await service.getVehicleById(request);
       return {
         statusCode: result.code,
-        body: JSON.stringify(result),
+        body: JSON.stringify(result)
       };
     } catch (error) {
       console.error(error);
       return {
         statusCode: error.statusCode,
-        body: JSON.stringify(error),
+        body: JSON.stringify(error)
       };
     }
   },
@@ -42,29 +42,32 @@ module.exports = {
       const result = await service.getAllVehicles(request);
       return {
         statusCode: result.code,
-        body: JSON.stringify(result),
+        body: JSON.stringify(result)
       };
     } catch (error) {
       console.error(error);
       return {
         statusCode: error.statusCode,
-        body: JSON.stringify(error),
+        body: JSON.stringify(error)
       };
     }
   },
   async updateVehicle(event) {
     try {
-      const request = await validator.updateVehicleValidator({...JSON.parse(event.body), id: event.pathParameters.id});
+      const request = await validator.updateVehicleValidator({
+        ...JSON.parse(event.body),
+        id: event.pathParameters.id
+      });
       const result = await service.updateVehicle(request);
       return {
         statusCode: result.code,
-        body: JSON.stringify(result),
+        body: JSON.stringify(result)
       };
     } catch (error) {
       console.error(error);
       return {
         statusCode: error.statusCode,
-        body: JSON.stringify(error),
+        body: JSON.stringify(error)
       };
     }
   },
@@ -74,14 +77,14 @@ module.exports = {
       const result = await service.deleteVehicle(request);
       return {
         statusCode: result.code,
-        body: JSON.stringify(result),
+        body: JSON.stringify(result)
       };
     } catch (error) {
       console.error(error);
       return {
         statusCode: error.statusCode,
-        body: JSON.stringify(error),
+        body: JSON.stringify(error)
       };
     }
-  },
-}
+  }
+};

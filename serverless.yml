@@ -3,8 +3,8 @@ service: reto-tecnico
 frameworkVersion: "3"
 
 plugins:
-  - serverless-openapi-documenter
   - serverless-offline
+  - serverless-openapi-documenter
 
 custom:
   documentation: ${file(./src/documentation/app/vehicle/serverless.doc.yml):documentation}

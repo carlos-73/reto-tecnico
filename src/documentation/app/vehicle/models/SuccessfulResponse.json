@@ -2,13 +2,7 @@
   "title": "Esquema de Respuesta Satisfactoria",
   "description": "Esquema perteneciente a una respuesta satisfactoria del API invocado",
   "type": "object",
-  "required": [
-    "status",
-    "code",
-    "message",
-    "number_records",
-    "object"
-  ],
+  "required": ["status", "code", "message", "number_records", "object"],
   "properties": {
     "status": {
       "$ref": "#/definitions/status"
